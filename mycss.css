@@ -1,0 +1,162 @@
+#button{
+    background-color: rgb(5, 3, 4);
+    color: rgb(245, 226, 226);
+    width: 70px;
+    height: 70px;
+    font-size:medium;
+    font-weight: bold;
+    background-image: url(./dice.gif);
+    background-size: cover;
+    
+}
+#ladder{
+    background-image: url(./ladder1.svg);
+    position: relative;
+    left: 1311px;
+    bottom: 404px;
+    width: 84px;
+    height: 297px;
+    transform: skew(37deg,359deg) scale(1,0.9);
+}
+.snake3{
+    background-image: url(./snake4.svg);
+    position: relative;
+    left: 579px;
+    bottom: 957px;
+    width: 241px;
+    height: 57px;
+    /* transform: scale(1.2, 3.3); */
+    transform: rotate(282deg)scale(1.8,1.7);
+}
+
+.snake1{
+    background-image: url(./snake4.svg);
+    position: relative;
+    left: 762px;
+    bottom: 757px;
+    width: 294px;
+    height: 69px;
+    transform: rotate(223deg);}
+.snake2{
+    background-image: url(./snake4.svg);
+    position: relative;
+    left: 958px;
+    bottom: 812px;
+    width: 297px;
+    height: 70px;
+    /* transform: skew(304deg,29deg); */
+    /* transition: revert; */
+    transform: rotate(261deg)scale(1.2);}
+.ladder2{    background-image: url(./ladder1.svg);
+    position: relative;
+    left: 1349px;
+    bottom: 1200px;
+    width: 79px;
+    height: 278px;
+    transform: skew(198deg,14deg);
+}
+table{
+   background-image: url(./fire-1128806.jpg);
+    width: 893px;
+    height: 608px;
+    position: relative;
+    left: 497px;
+    bottom: 7px;
+background-size: cover;}
+
+td{
+    color: rgb(196, 25, 25);
+    font-size:x-large;
+    width: 21px;
+    height: 58px;
+    background-size: cover;
+    font-weight: bold;
+}
+
+
+#dice{
+    font-size: larger;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    position: relative;
+    left: 43px;
+    bottom: -36px;
+    background-color: aliceblue;
+    width: 120px;
+}
+
+#matrix{
+    position: relative;
+    left: 96px;
+    bottom: 99px;
+    /* height: 50%; */
+}
+body{
+    background: url(./background2.jpg)  ;
+    position: relative; 
+    background-size: 100%;
+    height:23px; 
+    width: 23px;
+}
+#Playerchance{
+    font-size: larger;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    position: relative;
+    left: 34px;
+    bottom: -8px;
+    background-color: aliceblue;
+    width: 141px}
+    #diceandchance{
+        width: 20px;
+        height: 20px;
+    }
+    .ladder3{
+        background-image: url(./ladder1.svg);
+    position: relative;
+    left: 719px;
+    bottom: 1233px;
+    width: 84px;
+    height: 297px;
+    transform: skew(330deg,0deg) scale(1,0.5);
+    }
+    .ladder4{
+        background-image: url(./ladder1.svg);
+        position: relative;
+        left: 896px;
+        bottom: 1717px;
+        width: 84px;
+        height: 297px;
+        transform: skew(330deg,0deg) scale(1,0.5);
+    }
+.snake4{
+    background-image: url(./snake4.svg);
+    position: relative;
+    left: 1104px;
+    bottom: 1689px;
+    width: 294px;
+    height: 69px;
+    transform: rotate(312deg)
+}
+.snake5{
+    background-image: url(./snake4.svg);
+    position: relative;
+    left: 627px;
+    bottom: 1667px;
+    width: 294px;
+    height: 69px;
+    transform: rotate(312deg)scale(0.7);
+}
+.ladder5{
+    background-image: url(./ladder1.svg);
+    position: relative;
+    left: 1031px;
+    bottom: 2025px;
+    width: 84px;
+    height: 297px;
+    transform: skew(333deg,0deg) scale(1,1.3);
+}
+
+/* new Array(10).fill(0)
+for (i = 0; i < 10; i++) {
+    mat[i] = new Array(10).fill(0) */
