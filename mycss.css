@@ -156,7 +156,9 @@ body{
     height: 297px;
     transform: skew(333deg,0deg) scale(1,1.3);
 }
-
+#player{
+    background-image:url(./goti1.svg) ;
+}
 /* new Array(10).fill(0)
 for (i = 0; i < 10; i++) {
     mat[i] = new Array(10).fill(0) */
