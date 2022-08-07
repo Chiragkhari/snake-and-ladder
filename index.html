@@ -32,13 +32,15 @@
     <div class="snake5"></div>
     <div class="ladder5"></div>
     <script>
-        let count = 0;
-        var m = [9, 0];
-        var n = [9, 0];
-        var mat = new Array(10).fill(0)
+        let count = 0; //function was called on screen display and helps in distinguishing the two players
+        var m = [9, 0];//current position of player 1
+        var n = [9, 0];//current position of player 2 
+        var mat = new Array(10).fill(0) //matrix with zeros filled
         for (i = 0; i < 10; i++) {
             mat[i] = new Array(10).fill(0)
         }
+
+        //position of snakes and ladder
         mat[9][9] = "L1"
         mat[4][9] = "L2"
         mat[8][4] = "L3"
@@ -49,6 +51,8 @@
         mat[3][2] = "S3"
         mat[5][8] = "S4"
         mat[7][2] = "S5"
+
+        //object to get the position of player 
         const obj = {
             "L1": {
                 "zero": 5,
@@ -95,41 +99,57 @@
             }
 
         }
-        const chance = document.createElement("p")
-        const para = document.createElement("p")
-        let flag = false
-        let trap = false
+        const chance = document.createElement("p") //const to show player chance
+        const para = document.createElement("p") //const to display dice number
+        const goti1 = document.createElement("p") // const for goti1
+
+        let flag = false //for player 1 goti opening after 6 on the dice
+        let trap = false // for player  goti opening after 6 on the dice
         const buttonDice = document.getElementById("button");
         buttonDice.innerText = ""
-        setInterval(function () {
+        setInterval(function () {  //runs the dice gif after 3 secs
             buttonDice.style.backgroundImage = "url(./dice.gif)"
         }, 3000)
-        function rolldice() {
-
+        const goti1Img = document.createElement('img')
+        goti1Img.src = "./goti1.svg"
+        goti1Img.style.width = '20px'
+        goti1Img.style.height = '50px'
+        goti2Img = document.createElement('img')
+        goti2Img.src = "./goti2.svg"
+        goti2Img.style.width = '20px'
+        goti2Img.style.height = '50px'
+        function rolldice() { //calls funtion when dice is rolled
+            //movement of player 1
             if (count > 0 && count % 2 != 0) {
 
                 mat[m[0]][m[1]] = 0;
+             
+
+                // document.getElementById(`${m[0]}_${m[1]}`).appendChild() 
+
                 var diceValue = Math.floor(Math.random() * 6) + 1;
-                buttonDice.style.backgroundImage = `url('./${diceValue}.png')`;
+                buttonDice.style.backgroundImage = `url('./${diceValue}.png')`; //different img for different numbers of dice
                 buttonDice.style.backgroundSize = "100% 100%";
                 para.innerText = ("Dice value = " + diceValue)
-                dice.appendChild(para)
+                dice.appendChild(para)  //appending dice value
                 console.log(diceValue)
                 chance.innerText = "Player 2 Chance"
-                Playerchance.appendChild(chance)
+                Playerchance.appendChild(chance)//appending player chance
 
-                if (diceValue == 6) { flag = true }
-                // if odd values then dice value being added to row, column is kept enact.
+                if (diceValue == 6) { flag = true } //if 6 on the dice then flag is true
+
+
+                // if odd values then dice value being added to column
                 if (flag) {
 
-                    if (m[0] % 2 != 0) {
+                    if (m[0] % 2 != 0) { //checks if m[0] is odd 
                         m[1] += diceValue
                         console.log(m)
                     }
 
-                    else if (m[1] == 9 && m[0] % 2 != 0) {
-                        m[0]--
-                        m[1] -= diceValue // return m;
+                    else if (m[1] == 9 && m[0] % 2 != 0) { //checks the condition 
+                        m[0]--            //the row is changed because of the snake and ladder pattern 
+                        m[1] -= diceValue // positioning of player according to the pattern
                         console.log(m)
                     }
                     if (m[1] > 9 && m[0] % 2 != 0) {
@@ -147,7 +167,7 @@
 
                     }
 
-
+                    //if even values dice valuen is being subtracted from  coloumns 
 
                     else if (m[0] % 2 == 0 && m[1] > 0) {
                         m[1] -= diceValue
@@ -169,16 +189,13 @@
                         m[1] += diceValue + 1
                         console.log(m)
                     }
-                    // if (m=[3,0]) {
-                    //     m=[8,1]
-                    // }
+
 
                     console.log({ m })
-                    // var matrix = document.getElementById("matrix")
-                    if (m[0] == 0 && m[1] == 0) {
+                    if (m[0] == 0 && m[1] == 0) { //checks if the player reached the fnal position 
                         alert("Player 1 wins ")
                     }
-                    if (m[0] == 0 && diceValue > (m[1] - m[0])) {
+                    if (m[0] == 0 && diceValue > (m[1] - m[0])) { //dice value is not accepted
                         m;
                     }
                     if (m[0] == 0 && diceValue < (m[1] - m[0])) {
@@ -186,12 +203,19 @@
                     }
                     ;
                 }
-                snakeBite()
-                mat[m[0]][m[1]] = "1"
-            }
 
+                snakeBite() //player climb up the ladder or bitten by the snake
+
+
+                mat[m[0]][m[1]] = "1" // assigning value to the position of player 1 in the matrix
+                document.getElementById(`${m[0]}_${m[1]}`).appendChild(goti1Img) // = "<img src = './goti1.svg' alt ='player2' style= 'width:20px; height:40px' >"
+
+            }
+            //movement of player 2
             if (count > 0 && count % 2 == 0) {
                 mat[n[0]][n[1]] = 0;
+                
+
                 var diceValue = Math.floor(Math.random() * 6) + 1;
                 buttonDice.style.backgroundImage = `url('./${diceValue}.png')`;
                 buttonDice.style.backgroundSize = "100% 100%";
@@ -254,9 +278,7 @@
                         n[1] += diceValue + 1
                         console.log(n)
                     }
-                    // if (m=[3,0]) {
-                    //     m=[8,1]
-                    // }
+
 
                     console.log({ n })
                     // var matrix = document.getElementById("matrix")
@@ -271,41 +293,50 @@
                     }
                     ;
                 }
-                snakeBite2()
-                mat[n[0]][n[1]] = "2"
+                snakeBite2() //snake bite and ladder climb for player 2 
+                mat[n[0]][n[1]] = "2" //assigning value to position of player 2 in the matrix
+            document.getElementById(`${n[0]}_${n[1]}`).appendChild(goti2Img) 
+               
+
             }
-            mat[m[0]][m[1]] = "1"
+            mat[m[0]][m[1]] = "1" //maintaing position of player when function is not called
             mat[n[0]][n[1]] = "2"
 
 
             count++
-            printTable(mat)
+            // printTable(mat) //function to print the numbers and matrix in the table form
         }
 
         rolldice()
+        printTable()
+
         function printTable() {
-            let str = "<table border ='1px' cellspacing = '0' width='300px height='300px' >"
-           
+            var str = "<table border ='1px' cellspacing = '0' width='300px height='300px' >"
+
             for (var a = 9; a > -1; a--) {
-                str += "<tr>";
-                   
+                str += "<tr>"; // row of matrix starts
+
                 if (a % 2 !== 0) {
-                    for (let j = 10; j > 0; j--) {
-                        let num = a * 10 + j
-                        str += "<td>" + num + "</td>"
+                    for (var j = 10; j > 0; j--) {
+                        var num = a * 10 + j
+                        str += `<td id="${9 - a}_${10 - j}">` + num + "</td>" //each coloun is filled with numbers in odd rows
+
                     }
+
                 } else {
-                    for (let k = 1; k < 11; k++) {
-                        let num = a * 10 + k
-                        str += "<td>" + num + "</td>"
-
+                    for (var k = 1; k < 11; k++) {
+                        var num = a * 10 + k
+                        str += `<td id = "${9 - a}_${k - 1}" >` + num + "</td>" //each coloun is filled with numbers in even rows
                     }
-                }
-                str += "</tr>"
-            }
-            str += "</table>"
-            document.getElementById("matrix").innerHTML = str
 
+
+                }
+                str += "</tr>" //row is closed
+            }
+
+
+            str += "</table>" //table is closed
+            document.getElementById("matrix").innerHTML = str
 
         }
 
@@ -338,7 +369,7 @@
             n = [x, y]
         }
 
-        
+
 
 
 
