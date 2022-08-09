@@ -152,7 +152,7 @@
                         m[1] -= diceValue // positioning of player according to the pattern
                         console.log(m)
                     }
-                    if (m[1] > 9 && m[0] % 2 != 0) {
+                     if (m[1] > 9 && m[0] % 2 != 0) {
                         m[0]--
                         if (m[0] > 5) {
                             m[1] = 11 - ((m[1] - m[0]))
@@ -175,8 +175,8 @@
 
                     }
                     else if (m[0] % 2 == 0 && m[1] == 0) {
-                        m[1] += diceValue - 1
                         m[0]--
+                        m[1] += diceValue - 1
                         console.log(m)
                     }
                     if (m[0] % 2 == 0 && m[1] < 0 && diceValue > 3) {
@@ -195,10 +195,11 @@
                     if (m[0] == 0 && m[1] == 0) { //checks if the player reached the fnal position 
                         alert("Player 1 wins ")
                     }
-                    if (m[0] == 0 && diceValue > (m[1] - m[0])) { //dice value is not accepted
-                        m;
+                   else if (m[0] == 0 && diceValue > m[1]) { //dice value is not accepted
+                        return m[0]
+                        return m[1]
                     }
-                    if (m[0] == 0 && diceValue < (m[1] - m[0])) {
+                   else if (m[0] == 0 && diceValue <= m[1]) {
                         m[1] -= diceValue
                     }
                     ;
@@ -285,10 +286,12 @@
                     if (n[0] == 0 && n[1] == 0) {
                         alert("Player 2 wins ")
                     }
-                    if (n[0] == 0 && diceValue > (n[1] - n[0])) {
-                        n;
+                    else if (n[0] == 0 && diceValue > n[1]) {
+                        n[0]+=0;
+                        n[1]+=0;
+
                     }
-                    if (n[0] == 0 && diceValue < (n[1] - n[0])) {
+                    else if (n[0] == 0 && diceValue < n[1]) {
                         n[1] -= diceValue
                     }
                     ;
